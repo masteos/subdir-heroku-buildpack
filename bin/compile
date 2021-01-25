@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # bin/compile <build-dir> <cache-dir> <env-dir>
 
+echo "MASTEOS BUILDPACK"
+
 BUILD_DIR=${1:-}
 CACHE_DIR=${2:-}
 ENV_DIR=${3:-}
@@ -16,6 +18,7 @@ if [ -f $ENV_DIR/PROJECT_PATH ]; then
         echo "       moving working dir: $PROJECT_PATH to $TMP_DIR"
         cp -R $BUILD_DIR/$PROJECT_PATH/. $TMP_DIR/
         cp -r $BUILD_DIR/sdk/ $TMP_DIR
+        ls -a -1 $BUILD_DIR
         echo "       cleaning build dir $BUILD_DIR"
         rm -rf $BUILD_DIR
         echo "       recreating $BUILD_DIR"
@@ -23,6 +26,8 @@ if [ -f $ENV_DIR/PROJECT_PATH ]; then
         echo "       copying preserved work dir from cache $TMP_DIR to build dir $BUILD_DIR"
         cp -R $TMP_DIR/. $BUILD_DIR/
         mv $BUILD_DIR/sdk $BUILD_DIR/..
+        ls -a -1 $BUILD_DIR
+        ls -a -1 $BUILD_DIR/..
         echo "       cleaning tmp dir $TMP_DIR"
         rm -rf $TMP_DIR
         exit 0
