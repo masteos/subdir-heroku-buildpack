@@ -18,7 +18,7 @@ if [ -f $ENV_DIR/PROJECT_PATH ]; then
         echo "       moving working dir: $PROJECT_PATH to $TMP_DIR"
         cp -R $BUILD_DIR/$PROJECT_PATH/. $TMP_DIR/
         cp -r $BUILD_DIR/sdk/ $TMP_DIR
-        ls -a -1 $BUILD_DIR
+        ls -a -1 $TMP_DIR
         echo "       cleaning build dir $BUILD_DIR"
         rm -rf $BUILD_DIR
         echo "       recreating $BUILD_DIR"
